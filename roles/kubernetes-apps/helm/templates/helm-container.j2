@@ -2,6 +2,8 @@
 {{ docker_bin_dir }}/docker run --rm \
   --net=host \
   --name=helm \
+  -v ${HOME}/.kube/config：${HOME}/.kube/config
+  -e KUBECONFIG=${HOME}/.kube/config
   -v /etc/ssl:/etc/ssl:ro \
   -v {{ helm_home_dir }}:{{ helm_home_dir }}:rw \
   {% for dir in ssl_ca_dirs -%}
